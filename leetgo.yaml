@@ -1,0 +1,76 @@
+# Leetgo configuration file, see more at https://github.com/j178/leetgo
+
+# Your name
+author: pheonix14
+# Language of the question description: 'zh' (Simplified Chinese) or 'en' (English).
+language: en
+code:
+  # Language of code generated for questions: go, cpp, python, java... 
+  # (will be overridden by command line flag -l/--lang).
+  lang: go
+  # The default template to generate filename (without extension), e.g. {{.Id}}.{{.Slug}}
+  # Available attributes: Id, Slug, Title, Difficulty, Lang, SlugIsMeaningful
+  # (Most questions have descriptive slugs, but some consist of random characters. The SlugIsMeaningful boolean indicates whether a slug is meaningful.)
+  # Available functions: lower, upper, trim, padWithZero, toUnderscore, group.
+  filename_template: '{{ .Id | padWithZero 4 }}{{ if .SlugIsMeaningful }}.{{ .Slug }}{{ end }}'
+  # Generate question description into a separate question.md file, otherwise it will be embed in the code file.
+  separate_description_file: true
+  # Default modifiers for all languages.
+  modifiers:
+    - name: removeUselessComments
+  go:
+    # Base directory to put generated questions, defaults to the language slug, e.g. go, python, cpp.
+    out_dir: go
+    # Functions that modify the generated code.
+    modifiers:
+      - name: removeUselessComments
+      - name: changeReceiverName
+      - name: addNamedReturn
+      - name: addMod
+  python3:
+    # Base directory to put generated questions, defaults to the language slug, e.g. go, python, cpp.
+    out_dir: python
+    # Path to the python executable that creates the venv.
+    executable: python.exe
+  cpp:
+    # Base directory to put generated questions, defaults to the language slug, e.g. go, python, cpp.
+    out_dir: cpp
+    # C++ compiler
+    cxx: g++
+    # C++ compiler flags (our Leetcode I/O library implementation requires C++17).
+    cxxflags: -O2 -std=c++17
+  rust:
+    # Base directory to put generated questions, defaults to the language slug, e.g. go, python, cpp.
+    out_dir: rust
+  java:
+    # Base directory to put generated questions, defaults to the language slug, e.g. go, python, cpp.
+    out_dir: java
+leetcode:
+  # LeetCode site, https://leetcode.com or https://leetcode.cn
+  site: https://leetcode.com
+  # Credentials to access LeetCode.
+  credentials:
+    from: cookies
+    session: "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfYXV0aF91c2VyX2lkIjoiMjMzMTk0NjQiLCJfYXV0aF91c2VyX2JhY2tlbmQiOiJhbGxhdXRoLmFjY291bnQuYXV0aF9iYWNrZW5kcy5BdXRoZW50aWNhdGlvbkJhY2tlbmQiLCJfYXV0aF91c2VyX2hhc2giOiIwYTlmMTg3MTE2Mzk3ZjliNzQwMTg3ZjZjM2E2NjUzYzdkMmI4N2Q4MjBlMGZlOGNkNGIwN2ExYzgzNTllNDhmIiwic2Vzc2lvbl91dWlkIjoiOTJjM2FiYzIiLCJpZCI6MjMzMTk0NjQsImVtYWlsIjoicmlzZXJvemUwMHpAcHJvdG9ubWFpbC5jb20iLCJ1c2VybmFtZSI6InBoZW9uaXgxNCIsInVzZXJfc2x1ZyI6InBoZW9uaXgxNCIsImF2YXRhciI6Imh0dHBzOi8vYXNzZXRzLmxlZXRjb2RlLmNvbS91c2Vycy9waGVvbml4MTQvYXZhdGFyXzE3ODc0MDg4NDIucG5nIiwicmVmcmVzaGVkX2F0IjoxNzg5OTMwMDAwLCJpcCI6IjE1Mi41OC4xNjIuMTc1IiwiaWRlbnRpdHkiOiI5MjU0MzY4ODRjYzlhNmI4MDA1ZmViMDU1YzYxMGJhZiIsImRldmljZV93aXRoX2lwIjpbImE2Y2FlMjg4YzUyMTQ4MTk4ODRkMWFiNGExNGRjOTE1IiwiMTUyLjU4LjE2Mi4xNzUiXX0.6RrCTuklHIMdLvKJ1pNXXyuC7TgiJ_39Cuwl0JZ_C8c"
+    csrf: "hkQbKBVvDb3Ul8HfK1hvmdeaYvnP4gFw"
+contest:
+  # Base directory to put generated contest questions.
+  out_dir: contest
+  # Template to generate filename of the question.
+  filename_template: '{{ .ContestShortSlug }}/{{ .Id }}{{ if .SlugIsMeaningful }}.{{ .Slug }}{{ end }}'
+  # Open the contest page in browser after generating.
+  open_in_browser: true
+# Editor settings to open generated files.
+editor:
+  # Use a predefined editor: vim, vscode, goland
+  # Set to 'none' to disable, set to 'custom' to provide your own command and args.
+  use: none
+  # Custom command to open files.
+  command: ""
+  # Arguments to your custom command.
+  # String contains {{.CodeFile}}, {{.TestFile}}, {{.DescriptionFile}}, {{.TestCasesFile}} will be replaced with corresponding file path.
+  # {{.Folder}} will be substituted with the output directory.
+  # {{.Files}} will be substituted with the list of all file paths.
+  args: ""
+
+
