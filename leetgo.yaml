@@ -7,7 +7,7 @@ language: en
 code:
   # Language of code generated for questions: go, cpp, python, java... 
   # (will be overridden by command line flag -l/--lang).
-  lang: go
+  lang: javascript
   # The default template to generate filename (without extension), e.g. {{.Id}}.{{.Slug}}
   # Available attributes: Id, Slug, Title, Difficulty, Lang, SlugIsMeaningful
   # (Most questions have descriptive slugs, but some consist of random characters. The SlugIsMeaningful boolean indicates whether a slug is meaningful.)
@@ -72,5 +72,6 @@ editor:
   # {{.Folder}} will be substituted with the output directory.
   # {{.Files}} will be substituted with the list of all file paths.
   args: ""
+
 
 
